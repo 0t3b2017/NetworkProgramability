@@ -25,6 +25,10 @@ for HOST in f:
     for vlan_id in [100, 200, 300]:
        tn.write("no vlan " + str(vlan_id) + "\n")
 
+    for vlan_id in range(2, 26):
+        tn.write("vlan " + str(vlan_id) + "\n")
+        tn.write("name Python_VLAN_" + str(vlan_id) + "\n")
+
     tn.write("end\n")
     tn.write("copy run startup\n")
     tn.write("\n")

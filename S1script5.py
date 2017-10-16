@@ -11,24 +11,25 @@ password = getpass.getpass()
 f = open('myswitches')
 
 for HOST in f:
-    print("Configuring host {}".format(HOST))
-    tn = telnetlib.Telnet(HOST)
+    if HOST[0] != '#':
+        print("Configuring host {}".format(HOST))
+        tn = telnetlib.Telnet(HOST)
 
-    tn.read_until("Username: ")
-    tn.write(user + "\n")
-    if password:
-        tn.read_until("Password: ")
-        tn.write(password + "\n")
+        tn.read_until("Username: ")
+        tn.write(user + "\n")
+        if password:
+            tn.read_until("Password: ")
+            tn.write(password + "\n")
 
-    tn.write("configure terminal\n")
+        tn.write("configure terminal\n")
 
-    for vlan_id in range(2,26):
-       tn.write("vlan " + str(vlan_id) + "\n")
-       tn.write("name Python_VLAN_" + str(vlan_id) + "\n")
+        for vlan_id in range(2,26):
+            tn.write("vlan " + str(vlan_id) + "\n")
+            tn.write("name Python_VLAN_" + str(vlan_id) + "\n")
 
-    tn.write("end\n")
-    tn.write("copy run startup\n")
-    tn.write("\n")
-    tn.write("exit\n")
+        tn.write("end\n")
+        tn.write("copy run startup\n")
+        tn.write("\n")
+        tn.write("exit\n")
 
-    print tn.read_all()
+        print tn.read_all()
