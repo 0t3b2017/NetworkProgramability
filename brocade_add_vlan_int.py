@@ -20,7 +20,7 @@ print("")
 sleep(3)
 print("enable")
 print("configure terminal")
-for vlan_id in range(vlan_first, vlan_last + 1):
+for vlan_id in range(vlan_first,vlan_last + 1):
     print(" vlan {}".format(vlan_id))
     print(" tagged {}".format(interface1))
     print(" tagged {}".format(interface2))
