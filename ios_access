@@ -1,0 +1,15 @@
+line con 0
+logging synchronous
+vlan 2
+name netmiko4_vlan2
+int range g2/0 - 3
+switchport mode access
+switchport access vlan 2
+int range g0/0 - 1
+spanning-tree link-type point-to-point
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport nonegotiate
+switchport trunk allowed vlan 1,2
+end
+wr
