@@ -1,0 +1,5 @@
+show version
+show ip int brief
+show arp
+show mac address-table
+show spanning-tree
