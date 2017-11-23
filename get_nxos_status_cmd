@@ -1,0 +1,15 @@
+copy running-config startup-config
+show version
+show running-config
+show hsrp brief
+show hsrp detail
+show module
+show license usage
+show license
+show ip protocols
+show ip route
+show ip int br
+show ip arp
+show mac address-table
+show ip ospf neighbor
+show cdp neighbors

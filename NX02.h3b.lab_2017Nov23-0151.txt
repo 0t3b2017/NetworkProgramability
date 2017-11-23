@@ -1,0 +1,943 @@
+Getting status of host 192.168.122.72 on 2017Nov23-0151
+
+
+
+NX02# copy running-config startup-config
+[#                                       ]   1%[#                                       ]   2%[##                                      ]   3%[##                                      ]   4%[###                                     ]   5%[###                                     ]   6%[####                                    ]   8%[####                                    ]   9%[#####                                   ]  10%[#####                                   ]  11%[#####                                   ]  12%[######                                  ]  13%[#######                                 ]  15%[#######                                 ]  16%[#######                                 ]  17%[########                                ]  18%[########                                ]  19%[#########                               ]  20%[#########                               ]  22%[##########                              ]  23%[##########                              ]  24%[###########                             ]  25%[###########                             ]  26%[###########                             ]  27%[############                            ]  29%[#############                           ]  30%[#############                           ]  31%[#############                           ]  32%[##############                          ]  33%[##############                          ]  34%[###############                         ]  36%[###############                         ]  37%[################                        ]  38%[################                        ]  39%[#################                       ]  40%[#################                       ]  41%[##################                      ]  43%[##################                      ]  44%[###################                     ]  45%[###################                     ]  46%[###################                     ]  47%[####################                    ]  48%[#####################                   ]  50%[#####################                   ]  51%[#####################                   ]  52%[######################                  ]  53%[######################                  ]  54%[#######################                 ]  55%[#######################                 ]  56%[########################                ]  58%[########################                ]  59%[#########################               ]  60%[#########################               ]  61%[#########################               ]  62%[##########################              ]  63%[###########################             ]  65%[###########################             ]  66%[###########################             ]  67%[############################            ]  68%[############################            ]  69%[#############################           ]  70%[#############################           ]  72%[##############################          ]  73%[##############################          ]  74%[###############################         ]  75%[###############################         ]  76%[###############################         ]  77%[################################        ]  79%[#################################       ]  80%[#################################       ]  81%[#################################       ]  82%[##################################      ]  83%[##################################      ]  84%[###################################     ]  86%[###################################     ]  87%[####################################    ]  88%[####################################    ]  89%[#####################################   ]  90%[#####################################   ]  91%[######################################  ]  93%[######################################  ]  94%[####################################### ]  95%[####################################### ]  96%[####################################### ]  97%[########################################]  98%[########################################] 100%
+Copy complete.
+
+NX02# show version
+Cisco Nexus Operating System (NX-OS) Software
+TAC support: http://www.cisco.com/tac
+Documents: http://www.cisco.com/en/US/products/ps9372/tsd_products_support_series_home.html
+Copyright (c) 2002-2016, Cisco Systems, Inc. All rights reserved.
+The copyrights to certain works contained herein are owned by
+other third parties and are used and distributed under license.
+Some parts of this software are covered under the GNU Public
+License. A copy of the license is available at
+http://www.gnu.org/licenses/gpl.html.
+
+NX-OSv is a demo version of the Nexus Operating System
+
+Software
+  loader:    version N/A
+  kickstart: version 7.3(0)D1(1)
+  system:    version 7.3(0)D1(1)
+  kickstart image file is: bootflash:///titanium-d1-kickstart.7.3.0.D1.1.bin
+  kickstart compile time:  1/11/2016 16:00:00 [02/11/2016 10:30:12]
+  system image file is:    bootflash:///titanium-d1.7.3.0.D1.1.bin
+  system compile time:     1/11/2016 16:00:00 [02/11/2016 13:08:11]
+
+
+Hardware
+  cisco NX-OSv Chassis ("NX-OSv Supervisor Module")
+  QEMU Virtual CPU version 2.5 with 3064740 kB of memory.
+  Processor Board ID TM320DBF00B
+
+  Device name: NX02
+  bootflash:    3184776 kB
+
+Kernel uptime is 0 day(s), 1 hour(s), 15 minute(s), 24 second(s)
+
+
+plugin
+  Core Plugin, Ethernet Plugin
+
+Active Package(s)
+
+NX02# show running-config
+
+!Command: show running-config
+!Time: Thu Nov 23 03:52:01 2017
+
+version 7.3(0)D1(1)
+power redundancy-mode redundant
+license grace-period
+
+hostname NX02
+vdc NX02 id 1
+  limit-resource module-type m1 m1xl m2xl f2e 
+  allocate interface Ethernet2/1-48
+  allocate interface Ethernet3/1-48
+  allocate interface Ethernet4/1-48
+  limit-resource vlan minimum 16 maximum 4094
+  limit-resource vrf minimum 2 maximum 4096
+  limit-resource port-channel minimum 0 maximum 768
+  limit-resource u4route-mem minimum 96 maximum 96
+  limit-resource u6route-mem minimum 24 maximum 24
+  limit-resource m4route-mem minimum 58 maximum 58
+  limit-resource m6route-mem minimum 8 maximum 8
+
+cfs eth distribute
+feature ospf
+feature hsrp
+feature vpc
+
+username admin password 5 $5$Otc7T0NC$K.ulnSZnSyXLrTGNBdtLgZJXEa8EeNx.BrdZ98XyK2C  role network-admin
+no password strength-check
+ip domain-lookup
+ip domain-name h3b.lab
+crypto key param rsa label NX02.h3b.lab modulus 1024 
+vlan dot1Q tag native
+system default switchport
+system jumbomtu 0
+no logging event trunk-status enable
+copp profile strict
+snmp-server user admin auth md5 0x328945d53e05e8e7207f8c20b142f0b7 priv 0x328945d53e05e8e7207f8c20b142f0b7 localizedkey engineID 128:0:0:9:3:0:0:0:0:0:0
+rmon event 1 log description FATAL(1) owner PMON@FATAL
+rmon event 2 log description CRITICAL(2) owner PMON@CRITICAL
+rmon event 3 log description ERROR(3) owner PMON@ERROR
+rmon event 4 log description WARNING(4) owner PMON@WARNING
+rmon event 5 log description INFORMATION(5) owner PMON@INFO
+snmp-server enable traps link
+
+vlan 1
+
+vrf context management
+
+interface mgmt0
+  description "MANAGEMENT"
+  vrf member management
+  ip address 192.168.122.72/24
+
+interface Ethernet2/1
+  no switchport
+  mac-address 0000.0000.002f
+  ip address 192.168.255.1/24
+  no shutdown
+
+interface Ethernet2/2
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/3
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/4
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/5
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/6
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/7
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/8
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/9
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/10
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/11
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/12
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/13
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/14
+  description NX02 <> NX01
+  switchport
+  no shutdown
+
+interface Ethernet2/15
+  description NX02 <> NX01
+  switchport
+  no shutdown
+
+interface Ethernet2/16
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/17
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/18
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/19
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/20
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/21
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/22
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/23
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/24
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/25
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/26
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/27
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/28
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/29
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/30
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/31
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/32
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/33
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/34
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/35
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/36
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/37
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/38
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/39
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/40
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/41
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/42
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/43
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/44
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/45
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/46
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/47
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet2/48
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/1
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/2
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/3
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/4
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/5
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/6
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/7
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/8
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/9
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/10
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/11
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/12
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/13
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/14
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/15
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/16
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/17
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/18
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/19
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/20
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/21
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/22
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/23
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/24
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/25
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/26
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/27
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/28
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/29
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/30
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/31
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/32
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/33
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/34
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/35
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/36
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/37
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/38
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/39
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/40
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/41
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/42
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/43
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/44
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/45
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/46
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/47
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet3/48
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/1
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/2
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/3
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/4
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/5
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/6
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/7
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/8
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/9
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/10
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/11
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/12
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/13
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/14
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/15
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/16
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/17
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/18
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/19
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/20
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/21
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/22
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/23
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/24
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/25
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/26
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/27
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/28
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/29
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/30
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/31
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/32
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/33
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/34
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/35
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/36
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/37
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/38
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/39
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/40
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/41
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/42
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/43
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/44
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/45
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/46
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/47
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+
+interface Ethernet4/48
+  shutdown
+  no switchport
+  mac-address 0000.0000.002f
+line console
+line vty
+boot kickstart bootflash:/titanium-d1-kickstart.7.3.0.D1.1.bin
+boot system bootflash:/titanium-d1.7.3.0.D1.1.bin 
+router ospf 1
+no system default switchport shutdown
+
+
+
+NX02# show hsrp brief
+*:IPv6 group   #:group belongs to a bundle
+                     P indicates configured to preempt.
+                     |
+ Interface   Grp  Prio P State    Active addr      Standby addr     Group addr
+
+NX02# show hsrp detail
+
+
+NX02# show module
+Mod  Ports  Module-Type                         Model              Status
+---  -----  ----------------------------------- ------------------ ----------
+1    0      NX-OSv Supervisor Module            N7K-SUP1           active *
+2    48     NX-OSv Ethernet Module              N7K-F248XP-25      ok
+3    48     NX-OSv Ethernet Module              N7K-F248XP-25      ok
+4    48     NX-OSv Ethernet Module              N7K-F248XP-25      ok
+
+Mod  Sw               Hw      World-Wide-Name(s) (WWN)
+---  ---------------  ------  --------------------------------------------------
+1    7.3(0)D1(1)      0.0     --                                                
+2    NA               0.0     --                                                
+3    NA               0.0     --                                                
+4    NA               0.0     --                                                
+
+
+Mod  MAC-Address(es)                         Serial-Num
+---  --------------------------------------  ----------
+1    00-27-32-0d-bf-00 to 00-27-32-0d-c6-ff  TM320DBF00B
+2    02-00-0c-00-02-00 to 02-00-0c-00-02-7f  TM320DBF00C
+3    02-00-0c-00-03-00 to 02-00-0c-00-03-7f  TM320DBF00D
+4    02-00-0c-00-04-00 to 02-00-0c-00-04-7f  TM320DBF00E
+
+* this terminal session 
+
+NX02# show license usage
+Feature                      Ins  Lic   Status Expiry Date Comments
+                                 Count
+--------------------------------------------------------------------------------
+MPLS_PKG                      No    -   Unused             -
+STORAGE-ENT                   No    -   Unused             -
+VDC_LICENSES                  No    0   Unused             -
+ENTERPRISE_PKG                No    -   Unused             -
+FCOE-N7K-F132XP               No    0   Unused             -
+FCOE-N7K-F248XP               No    0   Unused             -
+FCOE-N7K-F312FQ               No    0   Unused             -
+FCOE-N7K-F348XP               No    0   Unused             -
+ENHANCED_LAYER2_PKG           No    -   Unused             -
+SCALABLE_SERVICES_PKG         No    -   Unused             -
+TRANSPORT_SERVICES_PKG        No    -   Unused             -
+LAN_ADVANCED_SERVICES_PKG     No    -   Unused             -
+LAN_ENTERPRISE_SERVICES_PKG   No    -   In use             Grace 119D 23H
+--------------------------------------------------------------------------------
+
+NX02# show license
+
+
+NX02# show ip route
+IP Route Table for VRF "default"
+'*' denotes best ucast next-hop
+'**' denotes best mcast next-hop
+'[x/y]' denotes [preference/metric]
+'%<string>' in via output denotes VRF <string>
+
+192.168.255.0/24, ubest/mbest: 1/0, attached
+    *via 192.168.255.1, Eth2/1, [0/0], 00:55:40, direct
+192.168.255.1/32, ubest/mbest: 1/0, attached
+    *via 192.168.255.1, Eth2/1, [0/0], 00:55:40, local
+
+NX02# show ip int br
+IP Interface Status for VRF "default"(1)
+Interface            IP Address      Interface Status
+Eth2/1               192.168.255.1   protocol-up/link-up/admin-up       
+
+NX02# show ip arp
+
+Flags: * - Adjacencies learnt on non-active FHRP router
+       + - Adjacencies synced via CFSoE
+       # - Adjacencies Throttled for Glean
+       D - Static Adjacencies attached to down interface
+
+IP ARP Table for context default
+Total number of entries: 0
+Address         Age       MAC Address     Interface
+
+NX02# show mac address-table
+ Note: MAC table entries displayed are getting read from software.
+ Use the 'hardware-age' keyword to get information related to 'Age' 
+
+ Legend: 
+        * - primary entry, G - Gateway MAC, (R) - Routed MAC, O - Overlay MAC
+        age - seconds since last seen,+ - primary entry using vPC Peer-Link, E - EVPN entry 
+        (T) - True, (F) - False ,  ~~~ - use 'hardware-age' keyword to retrieve age info 
+  VLAN/BD   MAC Address      Type      age     Secure NTFY Ports/SWID.SSID.LID
+---------+-----------------+--------+---------+------+----+------------------
+G     -    0027.320d.bf2f    static       -       F    F  sup-eth1(R)
+
+
+NX02# show ip ospf neighbor
+
+
+NX02# show cdp neighbors
+Capability Codes: R - Router, T - Trans-Bridge, B - Source-Route-Bridge
+                  S - Switch, H - Host, I - IGMP, r - Repeater,
+                  V - VoIP-Phone, D - Remotely-Managed-Device,
+                  s - Supports-STP-Dispute
+
+Device-ID          Local Intrfce  Hldtme Capability  Platform      Port ID
+NX01.h3b.lab(TB3258B900B)
+                    mgmt0          167    R S s     N7K-C7018     mgmt0         
+Switch              Eth2/1         179    R S I                   Gig2/2        
+
+Total entries displayed: 2

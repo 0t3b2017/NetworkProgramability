@@ -1,0 +1,14 @@
+no vlan 2
+int range g2/0 - 3
+no switchport mode access
+no switchport access vlan 2
+int range g0/0 - 3
+no switchport trunk encapsulation dot1q
+no switchport mode trunk
+no switchport nonegotiate
+no switchport trunk allowed vlan 1,2
+int range g1/0 - 1
+no switchport trunk encapsulation dot1q
+no switchport mode trunk
+no switchport nonegotiate
+no switchport trunk allowed vlan 1,2
