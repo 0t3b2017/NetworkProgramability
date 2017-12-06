@@ -2,11 +2,12 @@
 # Verify if it's a valid IPv4 address
 
 
-#IP = "192.168.0.1"
-#MASK = "255.255.255.0"
+# IP = "192.168.0.1"
+# MASK = "255.255.255.0"
 
-IP = str(input("Type an IPv4 address: "))
-MASK = str(input("Type the Netmask: "))
+IP = str(raw_input("Type an IPv4 address: "))
+MASK = str(raw_input("Type the Netmask: "))
+
 
 def valida_ip(IP):
     OCT = IP.split(".")
@@ -18,10 +19,10 @@ def valida_ip(IP):
         return
     # Valida se são apenas números:
     for x in OCT:
-         if not x.isdecimal():
-             print("IP inválido!")
-             print("IP só pode conter números.")
-             return
+        if not x.isdecimal():
+            print("IP inválido!")
+            print("IP só pode conter números.")
+            return
     # Valida se octeto tem 8 bits
     for x in OCT:
         if int(x).bit_length() > 8:
@@ -35,7 +36,10 @@ def valida_ip(IP):
     OCT4 = bin(int(OCT[3]))[2:].zfill(8)
 
     print("Os octetos do IP {} em binário são: {}, {}, {} e {}.".format(IP, OCT1, OCT2, OCT3, OCT4))
+
+
 valida_ip(IP)
+
 
 def valida_mask(IP):
     OCT = IP.split(".")
@@ -47,10 +51,10 @@ def valida_mask(IP):
         return
     # Valida se são apenas números:
     for x in OCT:
-         if not x.isdecimal():
-             print("Mascára inválida!")
-             print("Mascára só pode conter números.")
-             return
+        if not x.isdecimal():
+            print("Mascára inválida!")
+            print("Mascára só pode conter números.")
+            return
     """
     # Valida se octeto é valido para máscara:
     for x in OCT:
@@ -70,8 +74,7 @@ def valida_mask(IP):
             print("Sequência de bits inválidos na mascára.")
             print("Octetos válidos são: 0, 128, 192, 224, 240, 248, 252, 254 e 255.")
             return
-    
-    
+
     # Separa cada octeto e preenche com 0 (se necessário) para conter 8 digitos.
     OCT1 = bin(int(OCT[0]))[2:].zfill(8)
     OCT2 = bin(int(OCT[1]))[2:].zfill(8)
@@ -79,4 +82,6 @@ def valida_mask(IP):
     OCT4 = bin(int(OCT[3]))[2:].zfill(8)
 
     print("Os octetos da Máscara {} em binário são: {}, {}, {} e {}.".format(IP, OCT1, OCT2, OCT3, OCT4))
+
+
 valida_mask(MASK)
