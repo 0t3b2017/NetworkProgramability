@@ -47,4 +47,3 @@ for devices in all_devices:
     net_connect = ConnectHandler(**devices)
     output = net_connect.send_config_set(lines)
     print output
-
