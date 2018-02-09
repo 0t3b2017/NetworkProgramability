@@ -3,7 +3,6 @@
 # Script para desativação de interfaces - Cisco IOS
 
 from netmiko import ConnectHandler
-
 import re
 
 ip = '10.255.255.254'
@@ -19,31 +18,6 @@ sw1 = {
 }
 
 if_name = re.compile(r'ge-\d/\d/\d')
-
-net_connect = ConnectHandler(**sw1)
-output = net_connect.send_command('show interface terse')
-#print(output)
-
-# coding=utf-8
-
-# Script para desativação de interfaces - Cisco IOS
-
-from netmiko import ConnectHandler
-import re
-
-ip = '10.255.255.254'
-user = 'uolcsredes'
-pwd = 'mudar123'
-int = '0/0'
-
-sw1 = {
-    'device_type': 'juniper',
-    'ip': ip,
-    'username': user,
-    'password': pwd,
-}
-
-if_name = re.compile(r'ge-\d/\d/\d+\s')
 
 net_connect = ConnectHandler(**sw1)
 output = net_connect.send_command('show interface terse')
