@@ -5,7 +5,7 @@
 from netmiko import ConnectHandler
 import re
 
-ip = '192.168.122.71'
+ip = '192.168.80.129'
 user = 'roberto'
 pwd = 'cisco'
 int = '0/0'
@@ -38,10 +38,9 @@ for interface in interfaces:
             output = net_connect.send_command('wr')
             print(output)
             print('')
+            print('## Configurações removidas da interface {}. ##'.format(int_name))
         else:
-            print('Interface {} está UP'.format(interface))
+            print('Interface {} está UP. Nenhuma alteração foi realizada.'.format(interface))
 
-if found:
-    print('Configurações removidas da interface {}.'.format(int_name))
-else:
+if not found:
     print('Nenhuma interface contém {}'.format(int))
