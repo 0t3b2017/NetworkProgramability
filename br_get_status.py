@@ -109,18 +109,3 @@ for devices in switches:
     print output
     file = open("status_{}_{}".format(devices, datetime.now().strftime('%Y-%m-%d_%H-%M')), "w")
     file.write(output)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,0 +1,16 @@
+## CONFIGURE BIG CONFIG
+
+qtd_vlan = 50
+# CREATION OF qtd_vlan L3 VLANS
+# REDE 10.0.X.0/24
+
+# CREATE VLANS
+for vlans in (range qtd_vlan):
+conf t
+vlan x
+
+
+# CONFIGURE INTERFACE VLANS
+
+
+#

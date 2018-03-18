@@ -1,0 +1,8 @@
+#!/usr/bin/expect -f
+spawn ssh 192.168.12.116
+expect "password: "
+send "abc@123\r"
+expect "$ "
+send "ps -ef |grep apache\r"
+expect "$ "
+send "exit\r"

@@ -1,0 +1,112 @@
+spawn ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no roberto@192.168.122.71
+Warning: Permanently added '192.168.122.71' (RSA) to the list of known hosts.
+
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************Password: 
+
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************
+SW01#spawn ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no roberto@192.168.122.71
+Warning: Permanently added '192.168.122.71' (RSA) to the list of known hosts.
+
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************Password: 
+
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************
+SW01#spawn ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no roberto@192.168.122.71
+Warning: Permanently added '192.168.122.71' (RSA) to the list of known hosts.
+
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************Password: 
+
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************
+SW01#spawn ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no roberto@192.168.122.71
+Warning: Permanently added '192.168.122.71' (RSA) to the list of known hosts.
+
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************Password: 
+
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************
+SW01#usage: send [args] string
+    while executing
+"send"
+    invoked from within
+"expect {
+                "*#"
+                send "copy running tftp:\r$tftp_server\r$host\r"
+
+    expect "*#"
+                send "exit\r"
+
+    
+
+l..."
+    invoked from within
+"expect { 
+                "*word:"     {
+                         send "$pass\r"
+
+#                expect {   
+#                "denied*"     { 
+#    ..."
+    ("while" body line 5)
+    invoked from within
+"while {[gets $lista host] > 0} {
+                sleep 1
+                spawn ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $user@$..."
+    (file "./glino_log" line 21)
+missing close-brace: possible unbalanced brace in comment
+    while executing
+"while {[gets $lista host] > 0} {"
+    (file "./glino_log" line 21)
